@@ -11,4 +11,9 @@ export default function ModuleRoutes(app) {
     const status = await modulesDao.updateModule(moduleId, moduleUpdates);
     res.send(status);
   }); 
+  app.post("/api/modules", async (req, res) => {
+    const module = req.body;
+    const newModule = await modulesDao.createModule(module);
+    res.send(newModule);
+  });
 }
